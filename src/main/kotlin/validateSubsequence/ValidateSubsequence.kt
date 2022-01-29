@@ -2,16 +2,16 @@ package validateSubsequence
 
 class ValidateSubsequence {
     fun isValidSubsequence(array: List<Int>, sequence: List<Int>): Boolean {
-        var i = 0
-        var j = 0
+        var arrayIndex = 0
+        var sequenceIndex = 0
 
-        while (i < array.size && j < sequence.size) {
-            if (array[i] == sequence[j]) {
-                j++
+        while (arrayIndex < array.size && sequenceIndex < sequence.size) {
+            if (array[arrayIndex] == sequence[sequenceIndex]) {
+                sequenceIndex++
             }
-            i++
+            arrayIndex++
         }
 
-        return j == sequence.size
+        return sequenceIndex == sequence.size
     }
 }
