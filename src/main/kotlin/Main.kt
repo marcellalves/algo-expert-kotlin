@@ -10,5 +10,6 @@ fun main(args: Array<String>) {
     graph.addEdge("B", "D")
     graph.addEdge("D", "C")
     graph.addEdge("A", "C")
-    graph.traverseDepthFirst("G")
+    // graph.traverseDepthFirstRecursive("A")
+    graph.traverseDepthFirstIterative("A")
 }

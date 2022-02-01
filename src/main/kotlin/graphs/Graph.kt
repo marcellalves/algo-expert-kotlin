@@ -1,5 +1,7 @@
 package graphs
 
+import java.util.*
+
 class Graph {
     private class Node(private val label: String) {
         override fun toString(): String {
@@ -41,22 +43,51 @@ class Graph {
         return stringBuilder.toString()
     }
 
-    fun traverseDepthFirst(root: String) {
+    fun traverseDepthFirstRecursive(root: String) {
         val node = nodes.get(root)
         if (node == null) {
             return
         }
 
-        traverseDepthFirst(node, hashSetOf())
+        traverseDepthFirstRecursive(node, hashSetOf())
     }
 
-    private fun traverseDepthFirst(root: Node?, visited: MutableSet<Node>) {
+    private fun traverseDepthFirstRecursive(root: Node?, visited: MutableSet<Node>) {
         println(root)
         root?.let { visited.add(it) }
 
         for (node in adjacencyList.get(root)!!) {
             if (!visited.contains(node)) {
-                traverseDepthFirst(node, visited)
+                traverseDepthFirstRecursive(node, visited)
+            }
+        }
+    }
+
+    fun traverseDepthFirstIterative(root: String) {
+        val node = nodes.get(root)
+        if (node == null) {
+            return;
+        }
+
+        val visited: MutableSet<Node> = mutableSetOf()
+
+        val stack: Stack<Node> = Stack()
+        stack.push(node)
+
+        while (!stack.empty()) {
+            val current = stack.pop()
+
+            if (visited.contains(current)) {
+                continue
+            }
+
+            println(current)
+            visited.add(current)
+
+            for (neighbour in adjacencyList.get(current)!!) {
+                if (!visited.contains(neighbour)) {
+                    stack.push(neighbour)
+                }
             }
         }
     }
