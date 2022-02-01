@@ -5,7 +5,7 @@ import spock.lang.Specification
 class GraphTest extends Specification {
     Graph graph = new Graph()
 
-    def "should addNode" () {
+    def "should add nodes and edges" () {
         when:
         graph.addNode("node1")
         graph.addNode("node2")
