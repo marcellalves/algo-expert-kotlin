@@ -40,4 +40,24 @@ class Graph {
         }
         return stringBuilder.toString()
     }
+
+    fun traverseDepthFirst(root: String) {
+        val node = nodes.get(root)
+        if (node == null) {
+            return
+        }
+
+        traverseDepthFirst(node, hashSetOf())
+    }
+
+    private fun traverseDepthFirst(root: Node?, visited: MutableSet<Node>) {
+        println(root)
+        root?.let { visited.add(it) }
+
+        for (node in adjacencyList.get(root)!!) {
+            if (!visited.contains(node)) {
+                traverseDepthFirst(node, visited)
+            }
+        }
+    }
 }
