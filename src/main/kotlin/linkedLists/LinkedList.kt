@@ -16,7 +16,18 @@ class LinkedList () {
         }
         first = node
     }
-    //addLast
+
+    fun addLast (value: Int) {
+        val node = Node(value)
+
+        if (last == null) {
+            first = node
+        } else {
+            last!!.setNext(node)
+        }
+
+        last = node
+    }
     //deleteFirst
     //deleteLast
     //contains
