@@ -44,4 +44,14 @@ class LinkedListTest extends Specification  {
         linkedList.first.next.value == 2
         linkedList.first.next.next.value == 3
     }
+
+    def "should print the linked list correctly"() {
+        when:
+        linkedList.addFirst(1)
+        linkedList.addFirst(2)
+        linkedList.addFirst(3)
+
+        then:
+        linkedList.toString() == "3 -> 2 -> 1"
+    }
 }
