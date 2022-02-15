@@ -1,18 +1,18 @@
 package linkedLists
 
 class LinkedList () {
-    private var first: Node? = null
-    private var last: Node? = null
+    var first: Node? = null
+    var last: Node? = null
 
     fun addFirst (value: Int) {
         val node = Node(value)
 
         if (first == null) {
-            if (last == null) {
-                last = node
+            if (this.last == null) {
+                this.last = node
             }
         } else {
-            node.setNext(first!!)
+            node?.next = first!!
         }
         first = node
     }
@@ -21,13 +21,14 @@ class LinkedList () {
         val node = Node(value)
 
         if (last == null) {
-            first = node
+            this.first = node
         } else {
-            last!!.setNext(node)
+            last!!.next = node
         }
 
         last = node
     }
+
     //deleteFirst
     //deleteLast
     //contains
@@ -38,12 +39,12 @@ class LinkedList () {
         var node = this.first
 
         while (node != null) {
-            if (node.getNext() != null) {
-                stringBuilder.append("${node.getValue()} -> ")
+            if (node.next != null) {
+                stringBuilder.append("${node.value} -> ")
             } else {
-               stringBuilder.append(node.getValue())
+               stringBuilder.append(node.value)
             }
-            node = node.getNext()
+            node = node.next
         }
 
         return stringBuilder.toString()

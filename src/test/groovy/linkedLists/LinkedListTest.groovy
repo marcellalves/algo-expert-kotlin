@@ -10,7 +10,7 @@ class LinkedListTest extends Specification  {
         linkedList.addFirst(1)
 
         then:
-        linkedList.toString() == "1"
+        linkedList.first.value == 1
     }
 
     def "should add multiple nodes at the beginning of the list"() {
@@ -20,15 +20,17 @@ class LinkedListTest extends Specification  {
         linkedList.addFirst(3)
 
         then:
-        linkedList.toString() == "3 -> 2 -> 1"
+        linkedList.first.value == 3
+        linkedList.first.next.value == 2
+        linkedList.first.next.next.value == 1
     }
 
     def "should add single node at the end of the list"() {
         when:
-        linkedList.addLast(1)
+        linkedList.addLast (1)
 
         then:
-        linkedList.toString() == "1"
+        linkedList.last.value == 1
     }
 
     def "should add multiple nodes at the end of the list"() {
@@ -38,6 +40,8 @@ class LinkedListTest extends Specification  {
         linkedList.addLast(3)
 
         then:
-        linkedList.toString() == "1 -> 2 -> 3"
+        linkedList.first.value == 1
+        linkedList.first.next.value == 2
+        linkedList.first.next.next.value == 3
     }
 }
