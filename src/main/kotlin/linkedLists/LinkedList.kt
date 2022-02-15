@@ -29,7 +29,11 @@ class LinkedList () {
         last = node
     }
 
-    //deleteFirst
+    fun deleteFirst () {
+        var oldFirst = this.first
+        this.first = first?.next
+        oldFirst = null
+    }
     //deleteLast
     //contains
     //indexOf
