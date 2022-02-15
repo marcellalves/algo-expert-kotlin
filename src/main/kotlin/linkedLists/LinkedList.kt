@@ -32,9 +32,32 @@ class LinkedList () {
     fun deleteFirst () {
         var oldFirst = this.first
         this.first = first?.next
+        if (this.first == null) {
+            this.last = null
+        }
         oldFirst = null
     }
-    //deleteLast
+
+    fun deleteLast () {
+        var oldLast = this.last
+
+        var currentNode = this.first
+        while(currentNode != null) {
+            if (currentNode.next == null) {
+                this.last = null
+                this.first = null
+                break
+            }
+
+            if (currentNode.next?.next == null) {
+                this.last = currentNode
+                this.last!!.next = null
+                break
+            }
+            currentNode = currentNode?.next
+        }
+        oldLast = null
+    }
     //contains
     //indexOf
 

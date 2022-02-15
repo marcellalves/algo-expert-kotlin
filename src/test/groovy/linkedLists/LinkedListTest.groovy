@@ -73,6 +73,34 @@ class LinkedListTest extends Specification  {
 
         then:
         linkedList.first == null
+        linkedList.last == null
+    }
+
+    def "should remove the last node in a multiple node list"() {
+        given:
+        linkedList.addFirst(1)
+        linkedList.addFirst(2)
+        linkedList.addFirst(3)
+
+        when:
+        linkedList.deleteLast()
+
+        then:
+        linkedList.first.value == 3
+        linkedList.first.next.value == 2
+        linkedList.first.next.next == null
+    }
+
+    def "should remove the last node in a one node list"() {
+        given:
+        linkedList.addFirst(1)
+
+        when:
+        linkedList.deleteLast()
+
+        then:
+        linkedList.first == null
+        linkedList.last == null
     }
 
     def "should print the linked list correctly"() {
