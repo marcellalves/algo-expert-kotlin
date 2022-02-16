@@ -103,6 +103,80 @@ class LinkedListTest extends Specification  {
         linkedList.last == null
     }
 
+    def "should return true if a list with multiple nodes contains a value at the first node of the list"() {
+        given:
+        linkedList.addFirst(1)
+        linkedList.addFirst(2)
+        linkedList.addFirst(3)
+
+        when:
+        Boolean result = linkedList.contains(1)
+
+        then:
+        result == true
+    }
+
+    def "should return true if a list with multiple nodes contains a value at the middle of the list"() {
+        given:
+        linkedList.addFirst(1)
+        linkedList.addFirst(2)
+        linkedList.addFirst(3)
+
+        when:
+        Boolean result = linkedList.contains(2)
+
+        then:
+        result == true
+    }
+
+    def "should return true if a list with multiple nodes contains a value at the end of the list"() {
+        given:
+        linkedList.addFirst(1)
+        linkedList.addFirst(2)
+        linkedList.addFirst(3)
+
+        when:
+        Boolean result = linkedList.contains(3)
+
+        then:
+        result == true
+    }
+
+    def "should return true if a list with a single node contains a value"() {
+        given:
+        linkedList.addFirst(1)
+
+        when:
+        Boolean result = linkedList.contains(1)
+
+        then:
+        result == true
+    }
+
+    def "should return false if a list with multiple nodes does not contain a value"() {
+        given:
+        linkedList.addFirst(1)
+        linkedList.addFirst(2)
+        linkedList.addFirst(3)
+
+        when:
+        Boolean result = linkedList.contains(4)
+
+        then:
+        result == false
+    }
+
+    def "should return false if a list with a single node does not contain a value"() {
+        given:
+        linkedList.addFirst(1)
+
+        when:
+        Boolean result = linkedList.contains(2)
+
+        then:
+        result == false
+    }
+
     def "should print the linked list correctly"() {
         when:
         linkedList.addFirst(1)

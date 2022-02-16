@@ -58,7 +58,20 @@ class LinkedList () {
         }
         oldLast = null
     }
-    //contains
+
+    fun contains (value: Int): Boolean {
+        var node = this.first
+
+        while (node != null) {
+            if (node.value == value) {
+                return true
+            }
+            node = node.next
+        }
+
+        return false
+    }
+
     //indexOf
 
     override fun toString(): String {
