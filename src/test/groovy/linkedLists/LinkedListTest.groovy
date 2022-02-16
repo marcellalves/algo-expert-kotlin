@@ -177,6 +177,80 @@ class LinkedListTest extends Specification  {
         result == false
     }
 
+    def "should return the index of a value at the beginning of a multiple node list"() {
+        given:
+        linkedList.addFirst(3)
+        linkedList.addFirst(2)
+        linkedList.addFirst(1)
+
+        when:
+        Integer result = linkedList.indexOf(1)
+
+        then:
+        result == 0
+    }
+
+    def "should return the index of a value at the middle of a multiple node list"() {
+        given:
+        linkedList.addFirst(3)
+        linkedList.addFirst(2)
+        linkedList.addFirst(1)
+
+        when:
+        Integer result = linkedList.indexOf(2)
+
+        then:
+        result == 1
+    }
+
+    def "should return the index of a value at the end of a multiple node list"() {
+        given:
+        linkedList.addFirst(3)
+        linkedList.addFirst(2)
+        linkedList.addFirst(1)
+
+        when:
+        Integer result = linkedList.indexOf(3)
+
+        then:
+        result == 2
+    }
+
+    def "should return the index of a value in a one node list"() {
+        given:
+        linkedList.addFirst(1)
+
+        when:
+        Integer result = linkedList.indexOf(1)
+
+        then:
+        result == 0
+    }
+
+    def "should return -1 as index if a value does not exist at a multiple node list"() {
+        given:
+        linkedList.addFirst(3)
+        linkedList.addFirst(2)
+        linkedList.addFirst(1)
+
+        when:
+        Integer result = linkedList.indexOf(4)
+
+        then:
+        result == -1
+    }
+
+    def "should return -1 as index if a value does not exist at a one node list"() {
+        given:
+        linkedList.addFirst(1)
+
+        when:
+        Integer result = linkedList.indexOf(2)
+
+        then:
+        result == -1
+    }
+
     def "should print the linked list correctly"() {
         when:
         linkedList.addFirst(1)

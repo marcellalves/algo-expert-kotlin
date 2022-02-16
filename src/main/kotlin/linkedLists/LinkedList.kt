@@ -72,7 +72,22 @@ class LinkedList () {
         return false
     }
 
-    //indexOf
+    fun indexOf (value: Int): Int {
+        var node = this.first
+        var index = -1
+
+        while (node != null) {
+            index++
+
+            if (node.value == value) {
+                return index
+            }
+
+            node = node.next
+        }
+
+        return -1
+    }
 
     override fun toString(): String {
         val stringBuilder: StringBuilder = StringBuilder()
