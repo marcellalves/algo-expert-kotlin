@@ -12,7 +12,7 @@ class LinkedList () {
                 this.last = node
             }
         } else {
-            node?.next = first!!
+            node.next = first!!
         }
         first = node
     }
@@ -30,17 +30,13 @@ class LinkedList () {
     }
 
     fun deleteFirst () {
-        var oldFirst = this.first
         this.first = first?.next
         if (this.first == null) {
             this.last = null
         }
-        oldFirst = null
     }
 
     fun deleteLast () {
-        var oldLast = this.last
-
         var currentNode = this.first
         while(currentNode != null) {
             if (currentNode.next == null) {
@@ -54,9 +50,8 @@ class LinkedList () {
                 this.last!!.next = null
                 break
             }
-            currentNode = currentNode?.next
+            currentNode = currentNode.next
         }
-        oldLast = null
     }
 
     fun contains (value: Int): Boolean {

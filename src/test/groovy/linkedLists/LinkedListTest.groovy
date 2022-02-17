@@ -113,7 +113,7 @@ class LinkedListTest extends Specification  {
         Boolean result = linkedList.contains(1)
 
         then:
-        result == true
+        result
     }
 
     def "should return true if a list with multiple nodes contains a value at the middle of the list"() {
@@ -126,7 +126,7 @@ class LinkedListTest extends Specification  {
         Boolean result = linkedList.contains(2)
 
         then:
-        result == true
+        result
     }
 
     def "should return true if a list with multiple nodes contains a value at the end of the list"() {
@@ -139,7 +139,7 @@ class LinkedListTest extends Specification  {
         Boolean result = linkedList.contains(3)
 
         then:
-        result == true
+        result
     }
 
     def "should return true if a list with a single node contains a value"() {
@@ -150,7 +150,7 @@ class LinkedListTest extends Specification  {
         Boolean result = linkedList.contains(1)
 
         then:
-        result == true
+        result
     }
 
     def "should return false if a list with multiple nodes does not contain a value"() {
@@ -163,7 +163,7 @@ class LinkedListTest extends Specification  {
         Boolean result = linkedList.contains(4)
 
         then:
-        result == false
+        !result
     }
 
     def "should return false if a list with a single node does not contain a value"() {
@@ -174,7 +174,7 @@ class LinkedListTest extends Specification  {
         Boolean result = linkedList.contains(2)
 
         then:
-        result == false
+        !result
     }
 
     def "should return the index of a value at the beginning of a multiple node list"() {
