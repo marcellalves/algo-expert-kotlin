@@ -1,8 +1,20 @@
 package linkedLists
 
-class LinkedList () {
-    var first: Node? = null
-    var last: Node? = null
+class LinkedList {
+    private class Node (var value: Int) {
+        var next: Node? = null
+    }
+
+    private var first: Node? = null
+        get() = field
+        private set(value) {
+            field = value
+        }
+    private var last: Node? = null
+        get() = field
+        private set(value) {
+            field = value
+        }
 
     fun addFirst (value: Int) {
         val node = Node(value)
