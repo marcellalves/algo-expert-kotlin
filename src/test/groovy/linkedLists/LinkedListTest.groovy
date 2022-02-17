@@ -11,7 +11,9 @@ class LinkedListTest extends Specification  {
 
         then:
         linkedList.first.value == 1
+        linkedList.last.value == 1
         linkedList.first.next == null
+        linkedList.last.next == null
     }
 
     def "should add multiple nodes at the beginning of the list"() {
@@ -25,6 +27,8 @@ class LinkedListTest extends Specification  {
         linkedList.first.next.value == 2
         linkedList.first.next.next.value == 1
         linkedList.first.next.next.next == null
+        linkedList.last.value == 1
+        linkedList.last.next == null
     }
 
     def "should add single node at the end of the list"() {
@@ -34,6 +38,8 @@ class LinkedListTest extends Specification  {
         then:
         linkedList.last.value == 1
         linkedList.last.next == null
+        linkedList.first.value == 1
+        linkedList.first.next == null
     }
 
     def "should add multiple nodes at the end of the list"() {
@@ -47,6 +53,8 @@ class LinkedListTest extends Specification  {
         linkedList.first.next.value == 2
         linkedList.first.next.next.value == 3
         linkedList.first.next.next.next == null
+        linkedList.last.value == 3
+        linkedList.last.next == null
     }
 
     def "should remove the first node in a multiple node list"() {
@@ -62,6 +70,8 @@ class LinkedListTest extends Specification  {
         linkedList.first.value == 2
         linkedList.first.next.value == 1
         linkedList.first.next.next == null
+        linkedList.last.value == 1
+        linkedList.last.next == null
     }
 
     def "should remove the first node in a one node list"() {
@@ -89,6 +99,8 @@ class LinkedListTest extends Specification  {
         linkedList.first.value == 3
         linkedList.first.next.value == 2
         linkedList.first.next.next == null
+        linkedList.last.value == 2
+        linkedList.last.next == null
     }
 
     def "should remove the last node in a one node list"() {
