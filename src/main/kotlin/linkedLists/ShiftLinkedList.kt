@@ -9,12 +9,12 @@ class RunShiftLinkedList() {
         var shifted = mutableListOf<Pair<Int,ShiftLinkedList>>()
         var placed = mutableListOf<Int>()
         var currentIndex = 0
-        var lastIndex = 0
-        var node = head
+        var lastIndex = -1
+        var node: ShiftLinkedList? = head
 
         while (node != null) {
             lastIndex++
-            node = node.next!!
+            node = node.next
         }
 
         node = head
@@ -24,9 +24,10 @@ class RunShiftLinkedList() {
             if (targetIndex > lastIndex) {
                 targetIndex = targetIndex - lastIndex
             }
-            moveNode(node, targetIndex, shifted, placed)
+            moveNode(node, currentIndex, targetIndex, shifted, placed)
 
-            node = node.next!!
+            currentIndex++
+            node = node.next
         }
 
         for (item in shifted) {
@@ -34,17 +35,21 @@ class RunShiftLinkedList() {
             if (targetIndex > lastIndex) {
                 targetIndex -= lastIndex
             }
-            moveNode(item.second, targetIndex, shifted, placed)
+            moveNode(item.second, currentIndex, targetIndex, shifted, placed)
         }
 
         return head
     }
 
-    private fun moveNode(node: ShiftLinkedList, targetIndex: Int, shifted: MutableList<Pair<Int, ShiftLinkedList>>, placed: MutableList<Int>) {
+    private fun moveNode(node: ShiftLinkedList, currentIndex: Int, targetIndex: Int, shifted: MutableList<Pair<Int, ShiftLinkedList>>, placed: MutableList<Int>) {
         var nodeToBeReplaced: ShiftLinkedList? = null
 
-        for(i in 1..targetIndex) {
-            nodeToBeReplaced = node.next!!
+        for(i in currentIndex..targetIndex - 1) {
+            if (nodeToBeReplaced == null) {
+                nodeToBeReplaced = node.next
+            } else {
+                nodeToBeReplaced = nodeToBeReplaced.next
+            }
         }
 
         if (nodeToBeReplaced != null && !placed.contains(nodeToBeReplaced.value)) {
