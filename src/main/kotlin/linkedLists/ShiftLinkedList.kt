@@ -21,9 +21,19 @@ class RunShiftLinkedList() {
 
         while (node != null) {
             currentIndex++
-            var targetIndex = currentIndex + k
-            if (targetIndex > lastIndex) {
-                targetIndex = targetIndex - lastIndex - 1
+
+            var targetIndex: Int? = null
+            if (k > 0) {
+                targetIndex = currentIndex + k
+                if (targetIndex > lastIndex) {
+                    targetIndex = targetIndex - lastIndex - 1
+                }
+            } else {
+                targetIndex = lastIndex + k + currentIndex + 1
+
+                if (targetIndex > lastIndex) {
+                    targetIndex = targetIndex - lastIndex - 1
+                }
             }
 
             moveNode(node, head, currentIndex, targetIndex, shifted, placed)
