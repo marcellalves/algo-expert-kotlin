@@ -6,9 +6,9 @@ open class ShiftLinkedList(var value: Int) {
 
 class RunShiftLinkedList() {
     fun shiftLinkedListFunction(head: ShiftLinkedList, k: Int): ShiftLinkedList {
-        var shifted = mutableListOf<Pair<Int,ShiftLinkedList>>()
+        var shifted = mutableListOf<Pair<Int, Int>>()
         var placed = mutableListOf<Int>()
-        var currentIndex = 0
+        var currentIndex = -1
         var lastIndex = -1
         var node: ShiftLinkedList? = head
 
@@ -20,41 +20,67 @@ class RunShiftLinkedList() {
         node = head
 
         while (node != null) {
+            currentIndex++
             var targetIndex = currentIndex + k
             if (targetIndex > lastIndex) {
-                targetIndex = targetIndex - lastIndex
+                targetIndex = targetIndex - lastIndex - 1
             }
-            moveNode(node, currentIndex, targetIndex, shifted, placed)
 
-            currentIndex++
+            moveNode(node, head, currentIndex, targetIndex, shifted, placed)
+
             node = node.next
         }
 
+        /*
         for (item in shifted) {
             var targetIndex = item.first + k
             if (targetIndex > lastIndex) {
                 targetIndex -= lastIndex
             }
-            moveNode(item.second, currentIndex, targetIndex, shifted, placed)
+            moveNode(item.second, head, currentIndex, targetIndex, shifted, placed)
         }
+        */
 
         return head
     }
 
-    private fun moveNode(node: ShiftLinkedList, currentIndex: Int, targetIndex: Int, shifted: MutableList<Pair<Int, ShiftLinkedList>>, placed: MutableList<Int>) {
+    private fun moveNode(node: ShiftLinkedList, head: ShiftLinkedList, currentIndex: Int, targetIndex: Int, shifted: MutableList<Pair<Int, Int>>, placed: MutableList<Int>) {
         var nodeToBeReplaced: ShiftLinkedList? = null
 
-        for(i in currentIndex..targetIndex - 1) {
-            if (nodeToBeReplaced == null) {
-                nodeToBeReplaced = node.next
-            } else {
-                nodeToBeReplaced = nodeToBeReplaced.next
+        if (currentIndex < targetIndex) {
+            for (i in currentIndex..targetIndex) {
+                if (nodeToBeReplaced == null) {
+                    nodeToBeReplaced = node
+                } else {
+                    nodeToBeReplaced = nodeToBeReplaced.next
+                }
+            }
+        } else {
+            for (i in 0..targetIndex) {
+                if (nodeToBeReplaced == null) {
+                    nodeToBeReplaced = head
+                } else {
+                    nodeToBeReplaced = nodeToBeReplaced.next
+                }
             }
         }
 
-        if (nodeToBeReplaced != null && !placed.contains(nodeToBeReplaced.value)) {
-            placed.add(node.value)
-            shifted.add(Pair(targetIndex, nodeToBeReplaced))
+        if (nodeToBeReplaced != null) {
+            var oldValue = nodeToBeReplaced.value
+
+            nodeToBeReplaced.value = node.value
+
+            for (pair in shifted) {
+                if (pair.first == currentIndex) {
+                    nodeToBeReplaced.value = pair.second
+                    break
+                }
+            }
+
+            if (!placed.contains(node.value)) {
+                placed.add(node.value)
+            }
+            shifted.add(Pair(targetIndex, oldValue))
         }
     }
 }
