@@ -1,18 +1,18 @@
-package linkedLists
+package shiftLinkedList
 
 import spock.lang.Specification
 
-class ShiftLinkedListTest extends Specification {
+class LinkedListTest extends Specification {
     def "should return correct sequence for positive k"() {
-        RunShiftLinkedList runShiftLinkedList = new RunShiftLinkedList()
+        ShiftLinkedList shiftLinkedList = new ShiftLinkedList()
 
         given:
-        ShiftLinkedList shiftLinkedList0 = new ShiftLinkedList(0)
-        ShiftLinkedList shiftLinkedList1 = new ShiftLinkedList(1)
-        ShiftLinkedList shiftLinkedList2 = new ShiftLinkedList(2)
-        ShiftLinkedList shiftLinkedList3 = new ShiftLinkedList(3)
-        ShiftLinkedList shiftLinkedList4 = new ShiftLinkedList(4)
-        ShiftLinkedList shiftLinkedList5 = new ShiftLinkedList(5)
+        LinkedList shiftLinkedList0 = new LinkedList(0)
+        LinkedList shiftLinkedList1 = new LinkedList(1)
+        LinkedList shiftLinkedList2 = new LinkedList(2)
+        LinkedList shiftLinkedList3 = new LinkedList(3)
+        LinkedList shiftLinkedList4 = new LinkedList(4)
+        LinkedList shiftLinkedList5 = new LinkedList(5)
 
         shiftLinkedList0.next = shiftLinkedList1
         shiftLinkedList1.next = shiftLinkedList2
@@ -21,7 +21,7 @@ class ShiftLinkedListTest extends Specification {
         shiftLinkedList4.next = shiftLinkedList5
 
         when:
-        ShiftLinkedList result = runShiftLinkedList.shiftLinkedListFunction(shiftLinkedList0, 2)
+        LinkedList result = shiftLinkedList.shiftLinkedList(shiftLinkedList0, 2)
 
         then:
         result.value == 4
@@ -34,15 +34,15 @@ class ShiftLinkedListTest extends Specification {
     }
 
     def "should return correct sequence for negative k"() {
-        RunShiftLinkedList runShiftLinkedList = new RunShiftLinkedList()
+        ShiftLinkedList shiftLinkedList = new ShiftLinkedList()
 
         given:
-        ShiftLinkedList shiftLinkedList0 = new ShiftLinkedList(0)
-        ShiftLinkedList shiftLinkedList1 = new ShiftLinkedList(1)
-        ShiftLinkedList shiftLinkedList2 = new ShiftLinkedList(2)
-        ShiftLinkedList shiftLinkedList3 = new ShiftLinkedList(3)
-        ShiftLinkedList shiftLinkedList4 = new ShiftLinkedList(4)
-        ShiftLinkedList shiftLinkedList5 = new ShiftLinkedList(5)
+        LinkedList shiftLinkedList0 = new LinkedList(0)
+        LinkedList shiftLinkedList1 = new LinkedList(1)
+        LinkedList shiftLinkedList2 = new LinkedList(2)
+        LinkedList shiftLinkedList3 = new LinkedList(3)
+        LinkedList shiftLinkedList4 = new LinkedList(4)
+        LinkedList shiftLinkedList5 = new LinkedList(5)
 
         shiftLinkedList0.next = shiftLinkedList1
         shiftLinkedList1.next = shiftLinkedList2
@@ -51,7 +51,7 @@ class ShiftLinkedListTest extends Specification {
         shiftLinkedList4.next = shiftLinkedList5
 
         when:
-        ShiftLinkedList result = runShiftLinkedList.shiftLinkedListFunction(shiftLinkedList0, -2)
+        LinkedList result = shiftLinkedList.shiftLinkedList(shiftLinkedList0, -2)
 
         then:
         result.value == 2

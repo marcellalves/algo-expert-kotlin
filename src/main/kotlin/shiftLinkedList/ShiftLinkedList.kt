@@ -1,15 +1,15 @@
-package linkedLists
+package shiftLinkedList
 
-open class ShiftLinkedList(var value: Int) {
-    var next: ShiftLinkedList? = null
+open class LinkedList(var value: Int) {
+    var next: LinkedList? = null
 }
 
-class RunShiftLinkedList() {
-    fun shiftLinkedListFunction(head: ShiftLinkedList, k: Int): ShiftLinkedList {
+class ShiftLinkedList {
+    fun shiftLinkedList(head: LinkedList, k: Int): LinkedList {
         var shifted = mutableListOf<Pair<Int, Int>>()
         var currentIndex = -1
         var lastIndex = -1
-        var node: ShiftLinkedList? = head
+        var node: LinkedList? = head
 
         while (node != null) {
             lastIndex++
@@ -43,8 +43,8 @@ class RunShiftLinkedList() {
         return head
     }
 
-    private fun moveNode(node: ShiftLinkedList, head: ShiftLinkedList, currentIndex: Int, targetIndex: Int, shifted: MutableList<Pair<Int, Int>>) {
-        var nodeToBeReplaced: ShiftLinkedList? = null
+    private fun moveNode(node: LinkedList, head: LinkedList, currentIndex: Int, targetIndex: Int, shifted: MutableList<Pair<Int, Int>>) {
+        var nodeToBeReplaced: LinkedList? = null
 
         if (currentIndex < targetIndex) {
             for (i in currentIndex..targetIndex) {
