@@ -6,7 +6,7 @@ open class LinkedList(var value: Int) {
 
 class ShiftLinkedList {
     fun shiftLinkedList(head: LinkedList, k: Int): LinkedList {
-        var shifted = mutableListOf<Pair<Int, Int>>()
+        val shifted = mutableListOf<Pair<Int, Int>>()
         var currentIndex = -1
         var lastIndex = -1
         var node: LinkedList? = head
@@ -21,7 +21,7 @@ class ShiftLinkedList {
         while (node != null) {
             currentIndex++
 
-            var targetIndex: Int?
+            var targetIndex: Int
             if (k > 0) {
                 targetIndex = currentIndex + k
                 if (targetIndex > lastIndex) {
