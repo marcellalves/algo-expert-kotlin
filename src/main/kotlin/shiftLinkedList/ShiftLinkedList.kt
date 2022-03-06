@@ -43,7 +43,7 @@ class ShiftLinkedList {
         head: LinkedList,
         currentIndex: Int,
         targetIndex: Int,
-        shifted: MutableList<Pair<Int, Int>>,
+        shifted: MutableList<Pair<Int, Int>>
     ) {
         var nodeToBeReplaced: LinkedList? = null
 
