@@ -24,15 +24,12 @@ class ShiftLinkedList {
             var targetIndex: Int
             if (k > 0) {
                 targetIndex = currentIndex + k
-                if (targetIndex > lastIndex) {
-                    targetIndex = targetIndex - lastIndex - 1
-                }
             } else {
                 targetIndex = lastIndex + k + currentIndex + 1
+            }
 
-                if (targetIndex > lastIndex) {
-                    targetIndex = targetIndex - lastIndex - 1
-                }
+            if (targetIndex > lastIndex) {
+                targetIndex = targetIndex - lastIndex - 1
             }
 
             moveNode(node, head, currentIndex, targetIndex, shifted)
@@ -43,7 +40,13 @@ class ShiftLinkedList {
         return head
     }
 
-    private fun moveNode(node: LinkedList, head: LinkedList, currentIndex: Int, targetIndex: Int, shifted: MutableList<Pair<Int, Int>>) {
+    private fun moveNode(
+        node: LinkedList,
+        head: LinkedList,
+        currentIndex: Int,
+        targetIndex: Int,
+        shifted: MutableList<Pair<Int, Int>>
+    ) {
         var nodeToBeReplaced: LinkedList? = null
 
         if (currentIndex < targetIndex) {
