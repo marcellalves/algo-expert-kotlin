@@ -3,7 +3,7 @@ package shiftLinkedList
 import spock.lang.Specification
 
 class LinkedListTest extends Specification {
-    def "should return correct sequence for positive k"() {
+    def "should return correct sequence for k = 2"() {
         ShiftLinkedList shiftLinkedList = new ShiftLinkedList()
 
         given:
@@ -33,7 +33,7 @@ class LinkedListTest extends Specification {
         result.next.next.next.next.next.next == null
     }
 
-    def "should return correct sequence for negative k"() {
+    def "should return correct sequence for k = -2"() {
         ShiftLinkedList shiftLinkedList = new ShiftLinkedList()
 
         given:
@@ -63,7 +63,7 @@ class LinkedListTest extends Specification {
         result.next.next.next.next.next.next == null
     }
 
-    def "algo expert failing test case 8"() {
+    def "should return correct sequence for k = 8"() {
         ShiftLinkedList shiftLinkedList = new ShiftLinkedList()
 
         given:
