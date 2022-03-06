@@ -21,7 +21,7 @@ class ShiftLinkedList {
         while (node != null) {
             currentIndex++
 
-            var targetIndex: Int? = null
+            var targetIndex: Int?
             if (k > 0) {
                 targetIndex = currentIndex + k
                 if (targetIndex > lastIndex) {
