@@ -41,16 +41,6 @@ class RunShiftLinkedList() {
             node = node.next
         }
 
-        /*
-        for (item in shifted) {
-            var targetIndex = item.first + k
-            if (targetIndex > lastIndex) {
-                targetIndex -= lastIndex
-            }
-            moveNode(item.second, head, currentIndex, targetIndex, shifted, placed)
-        }
-        */
-
         return head
     }
 
