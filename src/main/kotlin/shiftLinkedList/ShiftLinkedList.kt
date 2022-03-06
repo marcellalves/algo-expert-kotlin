@@ -21,11 +21,9 @@ class ShiftLinkedList {
         while (node != null) {
             currentIndex++
 
-            var targetIndex: Int
-            if (k > 0) {
-                targetIndex = currentIndex + k
-            } else {
-                targetIndex = lastIndex + k + currentIndex + 1
+            var targetIndex: Int = currentIndex + k
+            if (k < 0) {
+                targetIndex = lastIndex + 1
             }
 
             if (targetIndex > lastIndex) {
@@ -45,7 +43,7 @@ class ShiftLinkedList {
         head: LinkedList,
         currentIndex: Int,
         targetIndex: Int,
-        shifted: MutableList<Pair<Int, Int>>
+        shifted: MutableList<Pair<Int, Int>>,
     ) {
         var nodeToBeReplaced: LinkedList? = null
 
