@@ -7,7 +7,6 @@ open class ShiftLinkedList(var value: Int) {
 class RunShiftLinkedList() {
     fun shiftLinkedListFunction(head: ShiftLinkedList, k: Int): ShiftLinkedList {
         var shifted = mutableListOf<Pair<Int, Int>>()
-        var placed = mutableListOf<Int>()
         var currentIndex = -1
         var lastIndex = -1
         var node: ShiftLinkedList? = head
@@ -36,7 +35,7 @@ class RunShiftLinkedList() {
                 }
             }
 
-            moveNode(node, head, currentIndex, targetIndex, shifted, placed)
+            moveNode(node, head, currentIndex, targetIndex, shifted)
 
             node = node.next
         }
@@ -44,7 +43,7 @@ class RunShiftLinkedList() {
         return head
     }
 
-    private fun moveNode(node: ShiftLinkedList, head: ShiftLinkedList, currentIndex: Int, targetIndex: Int, shifted: MutableList<Pair<Int, Int>>, placed: MutableList<Int>) {
+    private fun moveNode(node: ShiftLinkedList, head: ShiftLinkedList, currentIndex: Int, targetIndex: Int, shifted: MutableList<Pair<Int, Int>>) {
         var nodeToBeReplaced: ShiftLinkedList? = null
 
         if (currentIndex < targetIndex) {
@@ -77,9 +76,6 @@ class RunShiftLinkedList() {
                 }
             }
 
-            if (!placed.contains(node.value)) {
-                placed.add(node.value)
-            }
             shifted.add(Pair(targetIndex, oldValue))
         }
     }
