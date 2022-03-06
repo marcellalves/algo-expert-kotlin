@@ -68,7 +68,7 @@ class ShiftLinkedList {
         }
 
         if (nodeToBeReplaced != null) {
-            var oldValue = nodeToBeReplaced.value
+            val oldValue = nodeToBeReplaced.value
 
             nodeToBeReplaced.value = node.value
 
