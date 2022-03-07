@@ -21,13 +21,19 @@ class ShiftLinkedList {
         while (node != null) {
             currentIndex++
 
-            var targetIndex: Int = currentIndex + k
-            if (k < 0) {
-                targetIndex = lastIndex + 1
+            var targetIndex: Int
+            if (k > 0) {
+                targetIndex = currentIndex + k
+            } else {
+                targetIndex = lastIndex + k + currentIndex + 1
             }
 
             if (targetIndex > lastIndex) {
                 targetIndex = targetIndex - lastIndex - 1
+
+                if (targetIndex > lastIndex) {
+                    targetIndex = targetIndex - lastIndex - 1
+                }
             }
 
             moveNode(node, head, currentIndex, targetIndex, shifted)
@@ -77,7 +83,17 @@ class ShiftLinkedList {
                 }
             }
 
-            shifted.add(Pair(targetIndex, oldValue))
+            var pairExists = false
+            for (pair in shifted) {
+                if (pair.first == targetIndex) {
+                   pairExists = true
+                   break
+                }
+            }
+
+            if (!pairExists) {
+                shifted.add(Pair(targetIndex, oldValue))
+            }
         }
     }
 }
