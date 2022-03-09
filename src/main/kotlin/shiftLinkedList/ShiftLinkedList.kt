@@ -4,6 +4,8 @@ open class LinkedList(var value: Int) {
     var next: LinkedList? = null
 }
 
+// O(n) time complexity
+// O(n) space complexity
 class ShiftLinkedList {
     fun shiftLinkedList(head: LinkedList, k: Int): LinkedList {
         val shifted = mutableListOf<Pair<Int, Int>>()
