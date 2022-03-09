@@ -83,9 +83,7 @@ class ShiftLinkedList {
                 }
             }
 
-            if (!shifted.any { it.first == targetIndex }) {
-                shifted.add(Pair(targetIndex, oldValue))
-            }
+            shifted.add(Pair(targetIndex, oldValue))
         }
     }
 }
