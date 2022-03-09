@@ -25,7 +25,7 @@ class ShiftLinkedList {
             if (k > 0) {
                 targetIndex = currentIndex + k
             } else {
-                    targetIndex = lastIndex + k + currentIndex + 1
+                targetIndex = lastIndex + k + currentIndex + 1
             }
 
             while (targetIndex < 0) {
